@@ -25,17 +25,17 @@ This is the only chance for you to save the private key file. You'll need to pro
 
 ## Deploy CloudFormation
 
-1. Click <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=wiis_dallasLab&templateURL=https://s3-us-west-2.amazonaws.com/johammer/Public/LabEnvironment.template" target="_blank">Launch CloudFormation</a>
+1. Click <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=wiisdallasLab&templateURL=https://s3-us-west-2.amazonaws.com/johammer/Public/LabEnvironment.template" target="_blank">Launch CloudFormation</a>
 
 2. Click the **Next** button
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_S3_Template.png)
 
-3. Select 'wiis_dallas-Lab-<Region>' as the **KeyName**
+3. Select 'wiis_dallas-Lab' as the **KeyName**
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Details_Template.png)
 
 4. Click the **Next** button
 5. Under **Key** enter 'Name'
-6. Under **Value** enter 'wiis_dallas Lab'
+6. Under **Value** enter 'WIIS-Dallas'
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Options.png)
 
 7. Click the **Next** button
