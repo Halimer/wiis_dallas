@@ -49,7 +49,7 @@ This is the only chance for you to save the private key file. You'll need to pro
 11. Click the ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Refresh_Button.png)
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Create_In_Progress.png)
 
-12. Repaeat every few minutes until **Status** is **Create_Complete**
+12. Repeat every few minutes until **Status** is **Create_Complete**
 
 13. Select **Outputs**
 14. Click on **URL**
