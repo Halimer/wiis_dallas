@@ -16,7 +16,7 @@ The navigation pane is on the left side of the Amazon EC2 console. If you do not
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/AWS_Key_Pair_Name.png)
 
-3. Enter a **wiis_dallas-Lab** in the Key pair name field of the Create Key Pair dialog box, and then choose **Create**.
+3. Enter a **WIIS_Dallas** in the Key pair name field of the Create Key Pair dialog box, and then choose **Create**.
 4. The private key file is automatically downloaded by your browser. The base file name is the name you specified as the name of your key pair, and the file name extension is .pem. Save the private key file in a safe place.
 
 **Important**
@@ -28,24 +28,31 @@ This is the only chance for you to save the private key file. You'll need to pro
 1. Click <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=wiisdallasLab&templateURL=https://s3-us-west-2.amazonaws.com/johammer/Public/LabEnvironment.template" target="_blank">Launch CloudFormation</a>
 
 2. Click the **Next** button
+
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_S3_Template.png)
 
 3. Select 'wiis_dallas-Lab' as the **KeyName**
+
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Details_Template.png)
 
 4. Click the **Next** button
 5. Under **Key** enter 'Name'
 6. Under **Value** enter 'WIIS-Dallas'
+
+Leave all other fields as the default
+
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Options.png)
 
 7. Click the **Next** button
+
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Review.png)
 
 8. Select 'I acknowledge that AWS CloudFormation might create IAM resources.'
 9. Click the **Create** button
+
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Review.png)
 
-10. Select the **wiis_dallasLab**
+10. Select the **wiisdallasLab**
 11. Click the ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Refresh_Button.png)
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Create_In_Progress.png)
 
@@ -53,6 +60,7 @@ This is the only chance for you to save the private key file. You'll need to pro
 
 13. Select **Outputs**
 14. Click on **URL**
+
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Create_Complete.png)
 
 15. You should see the below
