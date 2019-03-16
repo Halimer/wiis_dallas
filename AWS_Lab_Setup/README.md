@@ -16,7 +16,7 @@ The navigation pane is on the left side of the Amazon EC2 console. If you do not
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/AWS_Key_Pair_Name.png)
 
-3. Enter a **WIIS_Dallas** in the Key pair name field of the Create Key Pair dialog box, and then choose **Create**.
+3. Enter a **WIIS-Dallas** in the Key pair name field of the Create Key Pair dialog box, and then choose **Create**.
 4. The private key file is automatically downloaded by your browser. The base file name is the name you specified as the name of your key pair, and the file name extension is .pem. Save the private key file in a safe place.
 
 **Important**
@@ -31,13 +31,13 @@ This is the only chance for you to save the private key file. You'll need to pro
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_S3_Template.png)
 
-3. Select 'wiis_dallas-Lab' as the **KeyName**
+3. Select 'WIIS-Dallas' as the **KeyName**
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Details_Template.png)
 
 4. Click the **Next** button
 5. Under **Key** enter 'Name'
-6. Under **Value** enter 'WIIS-Dallas'
+6. Under **Value** enter 'WIIS-Dallas-Lab'
 
 Leave all other fields as the default
 
