@@ -1,0 +1,32 @@
+{
+    "schemaVersion": "2.0",
+    "version": "1.0.1",
+    "packages": {
+        "windows": {
+            "_any": {
+                "x86_64": {
+                    "file": "TrendMicro_WINDOWS.zip"
+                }
+            }
+        },
+        "amazon": {
+            "_any": {
+                "x86_64": {
+                    "file": "TrendMicro_AMAZON.zip"
+                }
+            }
+        }
+    },
+    "files": {
+        "TrendMicro_WINDOWS.zip": {
+            "checksums": {
+                "sha256": "88544020ee8ed1977ce0eee155a0428c5391a8ecd89e32d56a687e69eae19363"
+            }
+        },
+        "TrendMicro_AMAZON.zip": {
+            "checksums": {
+                "sha256": "a262e03d5f83b066c358eec6e7c3c6354389c1998ec2e5db4918d0045e540134"
+            }
+        }
+    }
+}

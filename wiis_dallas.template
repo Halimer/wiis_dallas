@@ -34,7 +34,7 @@
         },
         "DeepSecurityAdminPass" : {
           "Type" : "String",
-          "Default" : "P@ssword12#",
+          "Default" : "Password123",
           "Description" : "Assume a vanilla user if no command-line spec provided"
       }
 
@@ -504,6 +504,7 @@
               "IamInstanceProfile": {
                   "Ref": "DSMProfile"
               },
+              "KeyName" : { "Ref" : "KeyName" },
               "ImageId": "ami-0ecd04d3f4ade6df1",
               "InstanceType": "m4.2xlarge",
               "NetworkInterfaces": [
