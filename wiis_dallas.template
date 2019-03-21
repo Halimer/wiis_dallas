@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Women in Information Seccurity Trend Micro Hands Workshop",
+  "Description": "Women in Information Security Trend Micro Hands On Workshop",
   "Metadata": {
       "AWS::CloudFormation::Interface": {
           "ParameterGroups": [
