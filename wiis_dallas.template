@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Sales Boot Camp DS stack",
+  "Description": "Women in Information Seccurity Trend Micro Hands Workshop",
   "Metadata": {
       "AWS::CloudFormation::Interface": {
           "ParameterGroups": [
@@ -25,17 +25,6 @@
         "Description": "Name of an existing EC2 KeyPair to enable SSH access to the instance",
         "Type": "AWS::EC2::KeyPair::KeyName",
         "ConstraintDescription": "must be the name of an existing EC2 KeyPair."
-      },
-
-      "DeepSecurityAdminName" : {
-            "Type" : "String",
-            "Default" : "masteradmin",
-            "Description" : "Assume a vanilla user if no command-line spec provided"
-        },
-        "DeepSecurityAdminPass" : {
-          "Type" : "String",
-          "Default" : "Password123",
-          "Description" : "Assume a vanilla user if no command-line spec provided"
       }
 
 
@@ -44,7 +33,7 @@
 
     
     "RegionMap": {
-      "us-east-1"      : { "64" : "ami-0ff8a91507f77f867" },
+      "us-east-1"      : { "64" : "ami-0de53d8956e8dcf80" },
       "us-east-2"      : { "64" : "ami-0b59bfac6be064b78" },
       "us-west-1"      : { "64" : "ami-0bdb828fd58c52235" },
       "us-west-2"      : { "64" : "ami-a0cfeed8" },
@@ -66,6 +55,80 @@
 
   },
   "Resources": {
+    "ACTIVATIONURL": {
+        "Type": "AWS::SSM::Parameter",
+        "Properties": {
+           "Name": "DSMACTIVATIONURL",
+           "Type": "String",
+           "Value": 
+           {
+            "Fn::Join": [
+              "", [
+                "dsm://",
+                {"Fn::GetAtt": ["DSM","PublicDnsName"]},
+                ":4120"
+              ]
+            ]
+          },
+           
+           "Description": "Activiation URL of the DSM Server for the Script"
+        }
+     },
+     "MANAGERURL": {
+        "Type": "AWS::SSM::Parameter",
+        "Properties": {
+           "Name": "DSMMANAGERURL",
+           "Type": "String",
+           "Value": 
+           {
+            "Fn::Join": [
+              "", [
+                "https://",
+                {"Fn::GetAtt": ["DSM","PublicDnsName"]},
+                ":443"
+              ]
+            ]
+          },
+           
+           "Description": "Management URL of the DSM Server for the Script"
+        }
+     },
+     "ManagedInstanceRole": {
+        "Type": "AWS::IAM::Role",
+        "Properties": {
+            "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                    {
+                        "Effect": "Allow",
+                        "Principal": {
+                            "Service": [
+                                "ssm.amazonaws.com",
+                                "ec2.amazonaws.com"
+                            ]
+                        },
+                        "Action": "sts:AssumeRole"
+                    }
+                ]
+            },
+            "ManagedPolicyArns": [
+                "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+            ],
+            "Path": "/"
+        }
+    },
+    "ManagedInstanceProfile": {
+        "Type": "AWS::IAM::InstanceProfile",
+        "Properties": {
+            "Path": "/",
+            "Roles": [
+                {
+                    "Ref": "ManagedInstanceRole"
+                }
+            ],
+            "InstanceProfileName": "ManagedInstanceProfile"
+        }
+    },
       "VPC": {
           "Type": "AWS::EC2::VPC",
           "Properties": {
@@ -532,8 +595,8 @@
           "DependsOn": "DSM",
           "Type": "AWS::EC2::Instance",
           "Properties": {
-              "ImageId": "ami-0080e4c5bc078760e",
-              "InstanceType": "m4.large",
+            "ImageId" : { "Fn::FindInMap" : [ "RegionMap", { "Ref" : "AWS::Region" }, "64"]},
+            "InstanceType": "t2.micro",
               "NetworkInterfaces": [
                   {
                       "DeviceIndex": "0",
@@ -560,6 +623,9 @@
         "Properties" : {
           "InstanceType" : "t2.micro",
           "KeyName" : { "Ref" : "KeyName" },
+          "IamInstanceProfile": {
+            "Ref": "ManagedInstanceProfile"
+        },
           "ImageId" : { "Fn::FindInMap" : [ "RegionMap", { "Ref" : "AWS::Region" }, "64"]},
           "NetworkInterfaces": [ {
             "AssociatePublicIpAddress": "true",
@@ -596,17 +662,9 @@
             "CidrIp" : "0.0.0.0/0"}
          ],
           "SecurityGroupEgress" : [ {
-            "IpProtocol" : "tcp",
-            "FromPort" : "80",
-            "ToPort" : "80",
-            "CidrIp" : "0.0.0.0/0"
-          },
-          {
-            "IpProtocol" : "tcp",
-            "FromPort" : "22",
-            "ToPort" : "22",
-            "CidrIp" : "0.0.0.0/0"
-          }
+                "IpProtocol" : "-1",
+                "CidrIp" : "0.0.0.0/0"
+              }
          ]
         },
         "DependsOn" : "VPC"

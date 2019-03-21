@@ -12,7 +12,7 @@
         "amazon": {
             "_any": {
                 "x86_64": {
-                    "file": "TrendMicro_AMAZON.zip"
+                    "file": "TrendMicro_LINUX.zip"
                 }
             }
         }
@@ -20,12 +20,12 @@
     "files": {
         "TrendMicro_WINDOWS.zip": {
             "checksums": {
-                "sha256": "88544020ee8ed1977ce0eee155a0428c5391a8ecd89e32d56a687e69eae19363"
+                "sha256": "7d9091c1cbff54cb077342711fbb67c8ef64c261081e389fd3a2d4d56b6eae2a"
             }
         },
-        "TrendMicro_AMAZON.zip": {
+        "TrendMicro_LINUX.zip": {
             "checksums": {
-                "sha256": "a262e03d5f83b066c358eec6e7c3c6354389c1998ec2e5db4918d0045e540134"
+                "sha256": "ab744b6ae3c294728b1e98afdd5da0bfd323c27ab1c290d2cbd9f987e985c6b4"
             }
         }
     }

@@ -25,7 +25,7 @@ This is the only chance for you to save the private key file. You'll need to pro
 
 ## Deploy CloudFormation
 
-1. Click <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=wiisdallasLab&templateURL=https://s3-us-west-2.amazonaws.com/johammer/Public/LabEnvironment.template" target="_blank">Launch CloudFormation</a>
+1. Click <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=wiisdallasLab&templateURL=https://s3-us-west-2.amazonaws.com/johammer/Public/Distributor/wiis_dallas.template" target="_blank">Launch CloudFormation</a>
 
 2. Click the **Next** button
 

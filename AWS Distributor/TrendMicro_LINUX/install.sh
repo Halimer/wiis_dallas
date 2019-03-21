@@ -1,7 +1,11 @@
 #!/bin/bash
+REGION=`curl http://169.254.169.254/latest/dynamic/instance-identity/document|grep region|awk -F\" '{print $4}'`
 
-ACTIVATIONURL='dsm://ec2-3-208-89-168.compute-1.amazonaws.com:4120/'
-MANAGERURL='https://ec2-3-208-89-168.compute-1.amazonaws.com:443'
+aws configure set region $REGION
+
+ACTIVATIONURL=`aws ssm get-parameters --name DSMACTIVATIONURL  --query 'Parameters[*].Value' --output text`
+MANAGERURL=`aws ssm get-parameters --name DSMMANAGERURL  --query 'Parameters[*].Value' --output text`
+
 CURLOPTIONS='--silent --tlsv1.2'
 linuxPlatform='';
 isRPM='';
