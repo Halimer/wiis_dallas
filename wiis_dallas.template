@@ -586,7 +586,7 @@
               ],
               "UserData": {
                   "Fn::Base64": {
-                      "Fn::Sub": "#!/bin/bash -x\necho ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJ+09jnhMgEODppjm2v0etSkRvXo1NOvhbVZyZuzSLJCgC3GQol5muOPe5JKRnpnplAjop3hHmTGhUZbhktTYDEoQ4LEWqTPrjYufp8enwrkeJiElCEFQLPoVUx/FF5CMsdb5AUSQaeSQr/X/f38VyxPulJZH1KjD1Kh1hpkmh33Pfv5LRV71sraaRapp4sihOYfKBLRDyclJBgJHI5DaWvjwyLw+umX58Qe0dCJrfRhH1c1yyPPmiQIB0t8ilkBxvp9Eu6qJb4MEeUXa9dHz8lgfGEBNQrKlwuk/soePy2kou1pgsV5DuvnN+jBkjtDr0rrcMBOtlfdYqEVAqkSxf 424d57@OSX133-424D57.local >> /home/ec2-user/.ssh/authorized_keys\ncurl -O https://s3.amazonaws.com/tmsalesbootcamp2018/awsFastMpDsmV2.sh\nchmod +x awsFastMpDsmV2.sh\nsh /awsFastMpDsmV2.sh ${DeepSecurityAdminName} ${DeepSecurityAdminPass} >> /awsFastMpDsmV2.log\n"
+                      "Fn::Sub": "#!/bin/bash -x\necho ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJ+09jnhMgEODppjm2v0etSkRvXo1NOvhbVZyZuzSLJCgC3GQol5muOPe5JKRnpnplAjop3hHmTGhUZbhktTYDEoQ4LEWqTPrjYufp8enwrkeJiElCEFQLPoVUx/FF5CMsdb5AUSQaeSQr/X/f38VyxPulJZH1KjD1Kh1hpkmh33Pfv5LRV71sraaRapp4sihOYfKBLRDyclJBgJHI5DaWvjwyLw+umX58Qe0dCJrfRhH1c1yyPPmiQIB0t8ilkBxvp9Eu6qJb4MEeUXa9dHz8lgfGEBNQrKlwuk/soePy2kou1pgsV5DuvnN+jBkjtDr0rrcMBOtlfdYqEVAqkSxf 424d57@OSX133-424D57.local >> /home/ec2-user/.ssh/authorized_keys\ncurl -O https://s3.amazonaws.com/tmsalesbootcamp2018/awsFastMpDsmV2.sh\nchmod +x awsFastMpDsmV2.sh\nsh /awsFastMpDsmV2.sh >> /awsFastMpDsmV2.log\n"
                   }
               }
           }
