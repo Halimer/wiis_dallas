@@ -595,7 +595,7 @@
           "DependsOn": "DSM",
           "Type": "AWS::EC2::Instance",
           "Properties": {
-            "ImageId" : { "Fn::FindInMap" : [ "RegionMap", { "Ref" : "AWS::Region" }, "64"]},
+            "ImageId": "ami-0080e4c5bc078760e",
             "InstanceType": "t2.micro",
               "NetworkInterfaces": [
                   {
@@ -606,7 +606,7 @@
                           }
                       ],
                       "SubnetId": {
-                          "Ref": "PublicSubnet1"
+                          "Ref": "PrivateSubnet1"
                       }
                   }
               ],
