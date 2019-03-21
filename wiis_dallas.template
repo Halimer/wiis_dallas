@@ -606,7 +606,7 @@
                           }
                       ],
                       "SubnetId": {
-                          "Ref": "PrivateSubnet1"
+                          "Ref": "PublicSubnet1"
                       }
                   }
               ],

@@ -5,7 +5,7 @@ In this section we are going to use Cloudformation to quickly deploy the Trend M
 
 1. Open the Amazon EC2 console at [https://console.aws.amazon.com/ec2/](https://console.aws.amazon.com/ec2/).
 
-2. In the navigation pane on the left had side of the screen, under NETWORK & SECURITY, choose **Key Pairs**.
+2. In the navigation pane on the left side of the screen, under NETWORK & SECURITY, choose **Key Pairs**.
 
 **Note**
 If you do not see the navigation pane, it might be minimized; choose the arrow to expand the pane.
@@ -14,7 +14,7 @@ If you do not see the navigation pane, it might be minimized; choose the arrow t
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/AWS_Key_Pair.png)
 
-4. Enter a **WIIS-Dallas** in the Key pair name field of the Create Key Pair dialog box, and then choose **Create**.
+4. Enter **WIIS-Dallas** in the Key pair name field of the Create Key Pair dialog box, and then choose **Create**.
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/AWS_Key_Pair_Name.png)
 
@@ -34,40 +34,40 @@ If you do not see the navigation pane, it might be minimized; choose the arrow t
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Details_Template.png)
 
-4. Click the **Next** button
+4. Click the **Next** button.
 
-5. Under **Key** enter 'Name'
+5. Under **Key** enter 'Name'.
 
-6. Under **Value** enter 'WIIS-Dallas-Lab'
+6. Under **Value** enter 'WIIS-Dallas-Lab'.
 
-7. Leave all other fields as the default and then click **Next**
+7. Leave all other fields as the default and then click **Next**.
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Options.png)
 
 8. Select 'I acknowledge that AWS CloudFormation might create IAM resources.'
 
-9. Click the **Create** button
+9. Click the **Create** button.
 
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Review.png)
 
-10. Click the Refresh Button at the top right side of the screen to view the status of your stack 
+10. Click the Refresh Button at the top right side of the screen to view the status of your stack. 
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/CFT_Refresh_Button.png)
 
-11. Select the check box next to **wiisdallasLab** 
+11. Select the check box next to **wiisdallasLab**.
 
-12. Repeat every few minutes until **Status** is **Create_Complete**
+12. Repeat every few minutes until **Status** is **Create_Complete**.
 
-13. Select **Outputs**
+13. Select **Outputs**.
 
-14. Click on the DSM **URL**
+14. Click on the DSM **URL**.
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/consoleurl.png)
 
-15. You wil receive a warning about the SSL certificate because we are using a self-signed certificate.  Click on **Advanced** and then **Proceed to URL** or **Accept the Risk and Continue** depending on your browser.
+15. You will receive a warning about the SSL certificate because we are using a self-signed certificate.  Click on **Advanced** and then **Proceed to URL** or **Accept the Risk and Continue** depending on your browser.
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/console_login.png)  
 
-16. Login to the console with the Username ***Masteradmin*** and the Password ***Password123!***
+16. Log in to the console with the Username 'Masteradmin' and the Password 'Password123!'.
 
