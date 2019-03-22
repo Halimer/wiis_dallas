@@ -24,7 +24,7 @@ If you do not see the navigation pane, it might be minimized; choose the arrow t
 
 ## Deploy CloudFormation
 
-1. Right click and open in a new tab the following link: <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=wiisdallasLab&templateURL=https://s3-us-west-2.amazonaws.com/johammer/Public/Distributor/wiis_dallas.template" target="_blank">Launch CloudFormation</a>
+1. Click to <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=wiisdallasLab&templateURL=https://s3-us-west-2.amazonaws.com/johammer/Public/Distributor/wiis_dallas.template" target="_blank">Launch CloudFormation</a>.
 
 2. The template address should already be filled out for you.  Click the **Next** button.
 
@@ -61,13 +61,43 @@ If you do not see the navigation pane, it might be minimized; choose the arrow t
 
 13. Select **Outputs**.
 
-14. Click on the DSM **URL**.
+14. Click on the DSM **URL**.  
+
+**Note**
+It will take a few minutes for the DSM console be available even after the stack shows complete. 
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/consoleurl.png)
 
-15. You will receive a warning about the SSL certificate because we are using a self-signed certificate.  Click on **Advanced** and then **Proceed to URL** or **Accept the Risk and Continue** depending on your browser.
+15. Once the console is available, you will receive a warning about the SSL certificate because we are using a self-signed certificate.  Click on **Advanced** and then **Proceed to URL** or **Accept the Risk and Continue** depending on your browser.
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/console_login.png)  
 
 16. Log in to the console with the Username 'Masteradmin' and the Password 'Password123!'.
+
+17. Once the console has finished updating, the Dashboard will show Green in the Computer Status and 2 Computers managed. It will take several minutes for the second instance to show up in the console.
+
+![](https://github.com/Halimer/wiis_dallas/blob/master/images/console1.png) 
+
+18. Click on the Computers tab to see which instances are available.  One of the instances will show Managed and will have the Base Policy Assigned to it.  
+
+![](https://github.com/Halimer/wiis_dallas/blob/master/images/console2.png)  
+
+19. Double click on the instance to open it.  On the **Policy** drop down, select **Linux Server**.  Press Save.
+
+![](https://github.com/Halimer/wiis_dallas/blob/master/images/console3.png) 
+![](https://github.com/Halimer/wiis_dallas/blob/master/images/console4.png) 
+
+20. Wait a minute for the policy to send.  Once it's been sent, Anti-Malware will show **On, Real Time**.
+
+![](https://github.com/Halimer/wiis_dallas/blob/master/images/console5.png) 
+
+21. The server is now protected.  Click on the Anti-Malware module and then Anti-Malware Events.  You will see that someone has been trying to download a virus but it's been stopped.
+
+![](https://github.com/Halimer/wiis_dallas/blob/master/images/malware.png) 
+
+22. Double click on any event to get the full details.  
+
+![](https://github.com/Halimer/wiis_dallas/blob/master/images/malware2.png) 
+
+23. Proceed to the <a href="https://github.com/Halimer/wiis_dallas/tree/master/AWS%20Distributor> AWS Distributor Lab</a>.
 
