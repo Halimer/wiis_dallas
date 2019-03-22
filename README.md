@@ -10,7 +10,7 @@ In this lab you will gain experience in configuring AWS services and Trend Micro
 
 ## Deploying the Deep Security Agent with AWS System Manager Distributor
 
-[Distributor Lab] (https://github.com/Halimer/wiis_dallas/tree/master/AWS Distributor)
+[Distributor Lab] (https://github.com/Halimer/wiis_dallas/tree/master/AWS_Distributor)
 
 ## Lab Cleanup 
 [Lab Cleanup](https://github.com/Halimer/wiis_dallas/tree/master/AWS_Lab_Cleanup)
