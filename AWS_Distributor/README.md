@@ -33,7 +33,7 @@ In this section we will use the AWS System Manager to distribute the Deep Securi
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/run4.PNG)
 
-10. Go back to your DSM console to see that the agent now shows managed.
+10. Go back to your DSM console to see that the agent now shows Managed.
 
 
 

@@ -99,5 +99,5 @@ It will take a few minutes for the DSM console be available even after the stack
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/malware2.png) 
 
-23. Proceed to the <a href="https://github.com/Halimer/wiis_dallas/tree/master/AWS_Distributor"> AWS Distributor Lab</a>.
+
 
