@@ -10,9 +10,11 @@ In this setion we will clean up the resources in your AWS Account
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/Clean_up2.png)
 
 2. Select the **wiisdallaslab**
+
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/Clean_up3.png)
 
 3. Click **Actions** then select **Delete Stack**
+
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/Clean_up4.png)
 
 4. Click **Yes, Delete**
