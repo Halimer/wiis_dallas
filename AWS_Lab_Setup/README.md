@@ -1,5 +1,5 @@
 # Lab Setup - AWS Environment and Trend Micro Deep Security Manager
-In this section we are going to use Cloudformation to quickly deploy the Trend Micro Deep Security Manager and the supporting AWS infrastructure.  
+In this section we are going to use CloudFormation to quickly deploy the Trend Micro Deep Security Manager and the supporting AWS infrastructure.  
 
 ## Creating a Key Pair Using Amazon EC2
 
@@ -74,7 +74,7 @@ It will take a few minutes for the DSM console be available even after the stack
 
 16. Log in to the console with the Username 'Masteradmin' and the Password 'Password123!'.
 
-17. Once the console has finished updating, the Dashboard will show Green in the Computer Status and 2 Computers managed. It will take several minutes for the second instance to show up in the console.
+17. Once the console has finished updating, the Dashboard will show Green in the Computer Status and **2** Computers managed. It will take several minutes for the second instance to show up in the console. You may need to refresh the browser to see any updates.
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/console1.png) 
 
@@ -99,5 +99,5 @@ It will take a few minutes for the DSM console be available even after the stack
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/malware2.png) 
 
-
+23.  Proceed to the [Distributor Lab](https://github.com/Halimer/wiis_dallas/tree/master/AWS_Distributor).
 
