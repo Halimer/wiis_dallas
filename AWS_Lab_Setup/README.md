@@ -64,7 +64,7 @@ If you do not see the navigation pane, it might be minimized; choose the arrow t
 14. Click on the DSM **URL**.  
 
 **Note**
-It will take a few minutes for the DSM console be available even after the stack shows complete. 
+It will take approximately **15** minutes for the DSM console be available even after the stack shows complete. 
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/consoleurl.png)
 
@@ -74,15 +74,15 @@ It will take a few minutes for the DSM console be available even after the stack
 
 16. Log in to the console with the Username 'Masteradmin' and the Password 'Password123!'.
 
-17. Once the console has finished updating, the Dashboard will show Green in the Computer Status and **2** Computers managed. It will take several minutes for the second instance to show up in the console. You may need to refresh the browser to see any updates.
+17. Once the console has finished updating, the Dashboard will show Green in the Computer Status and **2** Computers managed. It may take a few minutes for the second instance to show up in the console. You may need to refresh the browser to see any updates.
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/console1.png) 
 
-18. Click on the Computers tab to see which instances are available.  One of the instances will show Managed and will have the Base Policy Assigned to it.  
+18. Click on the Computers tab to see which instances are available.  If you need to narrow down your search, click on US East (Virginia). One of the instances will show Managed and will have the Base Policy Assigned to it.  
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/console2.png)  
 
-19. Double click on the instance to open it.  On the **Policy** drop down, select **Linux Server**.  Press Save.
+19. Double click on the instance to open it.  On the **Policy** drop down, expand **Base Policy** and then select **Linux Server**.  Press Save.
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/console3.png) 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/console4.png) 
@@ -91,7 +91,7 @@ It will take a few minutes for the DSM console be available even after the stack
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/console5.png) 
 
-21. The server is now protected.  Click on the Anti-Malware module and then Anti-Malware Events.  You will see that someone has been trying to download a virus but it's been stopped.
+21. The server is now protected.  Click on the Anti-Malware module and then Anti-Malware Events.  You will see that someone has been trying to download a virus but it's been stopped.  If you don't see any events, wait a minute and click refresh.
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/malware.png) 
 
