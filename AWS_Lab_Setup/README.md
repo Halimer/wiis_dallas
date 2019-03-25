@@ -20,7 +20,21 @@ If you do not see the navigation pane, it might be minimized; choose the arrow t
 
 5. The private key file will be automatically downloaded by your browser. The base file name is the name you specified as the name of your key pair, and the file name extension is .pem. Save the file.
 
+## Subscribing to Trend Micro Deep Security
 
+1. Go to the [Trend Micro Deep Security Marketplace](https://aws.amazon.com/marketplace/pp/B01AVYHVHO?qid=1553533248391&sr=0-2&ref_=brs_res_product_title) page to subscribe.
+
+2. Click on the **Continue To Subscribe** button at the top.
+
+![](https://github.com/Halimer/wiis_dallas/blob/master/images/market1.PNG)
+
+3. Next click on the **Accept Terms** button.
+
+![](https://github.com/Halimer/wiis_dallas/blob/master/images/market2.PNG)
+
+4. Wait until it tells you that you can configure the software. Do **NOT** click on the button to Configure at the top.  Proceed to the next section to deploy. 
+
+![](https://github.com/Halimer/wiis_dallas/blob/master/images/market4.PNG)
 
 ## Deploy CloudFormation
 
