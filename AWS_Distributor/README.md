@@ -35,5 +35,7 @@ In this section we will use the AWS System Manager to distribute the Deep Securi
 
 10. Go back to your DSM console to see that the agent now shows Managed.
 
-11. Proceed to the [Lab Cleanup](https://github.com/Halimer/wiis_dallas/tree/master/AWS_Lab_Cleanup).
+11. **Optional** - If you have time, proceed to the [Extra Credit Lab](https://github.com/Halimer/wiis/tree/master/Lab_Extra_Credit)
+
+12. Proceed to the [Lab Cleanup](https://github.com/Halimer/wiis_dallas/tree/master/AWS_Lab_Cleanup).
 
