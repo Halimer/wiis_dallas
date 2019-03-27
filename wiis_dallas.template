@@ -93,6 +93,13 @@
            "Description": "Management URL of the DSM Server for the Script"
         }
      },
+     "mydetector": {
+        "Type": "AWS::GuardDuty::Detector",
+        "Properties": {
+          "Enable": true,
+          "FindingPublishingFrequency": "FIFTEEN_MINUTES"
+        }
+      },
      "ManagedInstanceRole": {
         "Type": "AWS::IAM::Role",
         "Properties": {
