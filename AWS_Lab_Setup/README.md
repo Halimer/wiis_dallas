@@ -3,9 +3,11 @@ In this section we are going to use CloudFormation to quickly deploy the Trend M
 
 ## Creating a Key Pair Using Amazon EC2
 
-1. Open the Amazon EC2 console at [https://console.aws.amazon.com/ec2/](https://console.aws.amazon.com/ec2/).
+1. Open the Amazon EC2 console at [https://console.aws.amazon.com/ec2/](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1).
 
-2. In the navigation pane on the left side of the screen, under NETWORK & SECURITY, choose **Key Pairs**.
+2. Verify that your region says **N. Virginia** in the top right-hand side of the screen.  If not, change it.  
+
+3. In the navigation pane on the left side of the screen, under NETWORK & SECURITY, choose **Key Pairs**.
 
 **Note**
 If you do not see the navigation pane, it might be minimized; choose the arrow to expand the pane.
