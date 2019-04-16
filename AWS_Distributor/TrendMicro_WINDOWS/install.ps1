@@ -9,7 +9,7 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
    exit 1
 }
 
-$managerUrl=(Get-SSMParameter -Name DSMMANAGERURL).value
+$managerUrl=(Get-SSMParameter -Name DSMMANAGERURL).value + '/'
 
 $env:LogPath = "$env:appdata\Trend Micro\Deep Security Agent\installer"
 New-Item -path $env:LogPath -type directory
