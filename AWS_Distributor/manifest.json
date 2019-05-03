@@ -1,8 +1,8 @@
 {
     "schemaVersion": "2.0",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "packages": {
-        "windows":https://s3-us-west-2.amazonaws.com/johammer/TrendMicro/Distributor/manifest.json
+        "windows":{
             "_any": {
                 "x86_64": {
                     "file": "TrendMicro_WINDOWS.zip"
@@ -20,11 +20,7 @@
     "files": {
         "TrendMicro_WINDOWS.zip": {
             "checksums": {
-<<<<<<< HEAD
                 "sha256": "80bdd5df5709a2b37de7cc68c538082005f1dc674085c7c8e5b4192dfe8f4f0f"
-=======
-                "sha256": "9350A7294F36C8F44AA0E02B9D90C42D3A371147424C535CBE5DC7C0D589B089"
->>>>>>> d24fb2c408baa83423b7f07579406f48dee86fc2
             }
         },
         "TrendMicro_LINUX.zip": {
