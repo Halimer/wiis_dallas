@@ -12,8 +12,6 @@ In this lab you will gain experience in configuring AWS services and Trend Micro
 
 [Distributor Lab](https://github.com/Halimer/wiis_dallas/tree/master/AWS_Distributor)
 
-## Extra Credit
-[Extra Credit Lab](https://github.com/Halimer/wiis/tree/master/Lab_Extra_Credit)
 
 ## Lab Cleanup 
 [Lab Cleanup](https://github.com/Halimer/wiis_dallas/tree/master/AWS_Lab_Cleanup)

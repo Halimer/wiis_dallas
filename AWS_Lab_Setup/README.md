@@ -88,7 +88,7 @@ It will take approximately **15** minutes for the DSM console be available even 
 
 ![](https://github.com/Halimer/wiis_dallas/blob/master/images/console_login.png)  
 
-16. Log in to the console with the Username 'Masteradmin' and the Password 'Password123!'.
+16. Log in to the console with the Username **'Masteradmin'** and the Password **'Password123!'**.
 
 17. Once the console has finished updating, the Dashboard will show Green in the Computer Status and **2** Computers managed. It may take a few minutes for the second instance to show up in the console. You may need to refresh the browser to see any updates.
 
