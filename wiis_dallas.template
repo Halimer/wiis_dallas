@@ -25,56 +25,50 @@
         "Description": "Name of an existing EC2 KeyPair to enable SSH access to the instance",
         "Type": "AWS::EC2::KeyPair::KeyName",
         "ConstraintDescription": "must be the name of an existing EC2 KeyPair."
-      }
-
-
-},
-  "Mappings" : {
-
-    
-    "RegionMap": {
-      "us-east-1"      : { "64" : "ami-0de53d8956e8dcf80" },
-      "us-east-2"      : { "64" : "ami-0b59bfac6be064b78" },
-      "us-west-1"      : { "64" : "ami-0bdb828fd58c52235" },
-      "us-west-2"      : { "64" : "ami-a0cfeed8" },
-      "ca-central-1"   : { "64" : "ami-0b18956f" },
-      "eu-west-1"      : { "64" : "ami-047bb4163c506cd98" },
-      "eu-west-2"      : { "64" : "ami-f976839e" },
-      "eu-west-3"      : { "64" : "ami-0ebc281c20e89ba4b"},
-      "eu-central-1"   : { "64" : "ami-0233214e13e500f77" },
-      "ap-southeast-1" : { "64" : "ami-08569b978cc4dfa10" },
-      "ap-southeast-2" : { "64" : "ami-09b42976632b27e9b" },
-      "ap-northeast-1" : { "64" : "ami-06cd52961ce9f0d85" },
-      "ap-northeast-2" : { "64" : "ami-0a10b2721688ce9d2" },
-      "ap-south-1"     : { "64" : "ami-0912f71e06545ad88" },
-      "sa-east-1"      : { "64" : "ami-07b14488da8ea02a0" }
+      },
+      "WindowsAMI": {
+        "Description": "The latest AMI ID for Windows 2019 Core in English",
+        "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+        "AllowedValues": [
+            "/aws/service/ami-windows-latest/Windows_Server-2012-R2_RTM-English-64Bit-Base",
+            "/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-Base",
+            "/aws/service/ami-windows-latest/Windows_Server-2019-English-Core-Base",
+            "/aws/service/ami-windows-latest/Windows_Server-2016-English-Full-Base"
+        ],
+        "Default": "/aws/service/ami-windows-latest/Windows_Server-2016-English-Full-Base"
+    },
+    "AMZNLinuxAMI": {
+        "Description": "The latest AMI ID for Windows 2019 Core in English",
+        "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+        "Default": "/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2"
+    },
+    "AMZNLinux2AMI": {
+        "Description": "The latest AMI ID for Windows 2019 Core in English",
+        "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+        "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
     }
+},
 
 
-
-
-  },
   "Resources": {
     "ACTIVATIONURL": {
         "Type": "AWS::SSM::Parameter",
         "Properties": {
            "Name": "DSMACTIVATIONURL",
            "Type": "String",
-           "Value": 
-           {
+           "Value":            {
             "Fn::Join": [
               "", [
                 "dsm://",
                 {"Fn::GetAtt": ["DSM","PublicDnsName"]},
-                ":4120"
+                ":4120/"
               ]
             ]
           },
-           
            "Description": "Activiation URL of the DSM Server for the Script"
         }
      },
-     "MANAGERURL": {
+     "DSMMANAGERURL": {
         "Type": "AWS::SSM::Parameter",
         "Properties": {
            "Name": "DSMMANAGERURL",
@@ -93,13 +87,6 @@
            "Description": "Management URL of the DSM Server for the Script"
         }
      },
-     "mydetector": {
-        "Type": "AWS::GuardDuty::Detector",
-        "Properties": {
-          "Enable": true,
-          "FindingPublishingFrequency": "FIFTEEN_MINUTES"
-        }
-      },
      "ManagedInstanceRole": {
         "Type": "AWS::IAM::Role",
         "Properties": {
@@ -118,12 +105,117 @@
                     }
                 ]
             },
-            "ManagedPolicyArns": [
-                "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+            "Policies": [
+                {
+                    "PolicyName": "S3andSSMAccess",
+                    "PolicyDocument": {
+                        "Statement": [
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "ssm:DescribeAssociation",
+                                    "ssm:GetDeployablePatchSnapshotForInstance",
+                                    "ssm:GetDocument",
+                                    "ssm:DescribeDocument",
+                                    "ssm:GetManifest",
+                                    "ssm:GetParameters",
+                                    "ssm:GetParameter",
+                                    "ssm:ListAssociations",
+                                    "ssm:ListInstanceAssociations",
+                                    "ssm:PutInventory",
+                                    "ssm:PutComplianceItems",
+                                    "ssm:PutConfigurePackageResult",
+                                    "ssm:UpdateAssociationStatus",
+                                    "ssm:UpdateInstanceAssociationStatus",
+                                    "ssm:UpdateInstanceInformation"
+                                ],
+                                "Resource": "*"
+                            },
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "ssmmessages:CreateControlChannel",
+                                    "ssmmessages:CreateDataChannel",
+                                    "ssmmessages:OpenControlChannel",
+                                    "ssmmessages:OpenDataChannel"
+                                ],
+                                "Resource": "*"
+                            },
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "ec2messages:AcknowledgeMessage",
+                                    "ec2messages:DeleteMessage",
+                                    "ec2messages:FailMessage",
+                                    "ec2messages:GetEndpoint",
+                                    "ec2messages:GetMessages",
+                                    "ec2messages:SendReply"
+                                ],
+                                "Resource": "*"
+                            },
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "cloudwatch:PutMetricData"
+                                ],
+                                "Resource": "*"
+                            },
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "ec2:DescribeInstanceStatus"
+                                ],
+                                "Resource": "*"
+                            },
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "ds:CreateComputer",
+                                    "ds:DescribeDirectories"
+                                ],
+                                "Resource": "*"
+                            },
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "logs:CreateLogGroup",
+                                    "logs:CreateLogStream",
+                                    "logs:DescribeLogGroups",
+                                    "logs:DescribeLogStreams",
+                                    "logs:PutLogEvents"
+                                ],
+                                "Resource": "*"
+                            },
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "s3:GetBucketLocation",
+                                    "s3:PutObject",
+                                    "s3:GetObject",
+                                    "s3:GetEncryptionConfiguration",
+                                    "s3:AbortMultipartUpload",
+                                    "s3:ListMultipartUploadParts",
+                                    "s3:ListBucket",
+                                    "s3:ListBucketMultipartUploads"
+                                ],
+                                "Resource": "*"
+                            },
+                            {
+                                "Sid": "S3ListBuckets",
+                                "Effect": "Allow",
+                                "Action": [
+                                    "s3:ListAllMyBuckets"
+                                ],
+                                "Resource": "arn:aws:s3:::*"
+                            }
+                        ]
+                    }
+                }
             ],
             "Path": "/"
         }
     },
+
     "ManagedInstanceProfile": {
         "Type": "AWS::IAM::InstanceProfile",
         "Properties": {
@@ -602,7 +694,9 @@
           "DependsOn": "DSM",
           "Type": "AWS::EC2::Instance",
           "Properties": {
-            "ImageId": "ami-0080e4c5bc078760e",
+            "ImageId": {
+                "Ref": "AMZNLinuxAMI"
+            },
             "InstanceType": "t2.micro",
               "NetworkInterfaces": [
                   {
@@ -619,11 +713,103 @@
               ],
               "UserData": {
                   "Fn::Base64": {
-                      "Fn::Sub": "#!/bin/bash -x\necho ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJ+09jnhMgEODppjm2v0etSkRvXo1NOvhbVZyZuzSLJCgC3GQol5muOPe5JKRnpnplAjop3hHmTGhUZbhktTYDEoQ4LEWqTPrjYufp8enwrkeJiElCEFQLPoVUx/FF5CMsdb5AUSQaeSQr/X/f38VyxPulJZH1KjD1Kh1hpkmh33Pfv5LRV71sraaRapp4sihOYfKBLRDyclJBgJHI5DaWvjwyLw+umX58Qe0dCJrfRhH1c1yyPPmiQIB0t8ilkBxvp9Eu6qJb4MEeUXa9dHz8lgfGEBNQrKlwuk/soePy2kou1pgsV5DuvnN+jBkjtDr0rrcMBOtlfdYqEVAqkSxf 424d57@OSX133-424D57.local >> /home/ec2-user/.ssh/authorized_keys\nmkdir /opt/ds\ncd /opt/ds\ncurl -O \"https://files.trendmicro.com/products/deepsecurity/en/11.3/Agent-amzn1-11.3.0-168.x86_64.zip\"\nyum -y install unzip\nunzip -d . Agent-amzn1-11.3.0-168.x86_64.zip Agent-Core-amzn1-11.3.0-168.x86_64.rpm\nrpm -ivh Agent-Core-amzn1-11.3.0-168.x86_64.rpm\nsleep 15\n/opt/ds_agent/dsa_control -r\nsleep 420\n/opt/ds_agent/dsa_control -a dsm://${DSM.PublicDnsName}:4120/ \"policyid:1\"\ncrontab -l | { cat; echo \"* * * * * curl -O https://www.eicar.org/download/eicar.com.txt\"; } | crontab -\n"
+                      "Fn::Sub": "#!/bin/bash -x\necho ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJ+09jnhMgEODppjm2v0etSkRvXo1NOvhbVZyZuzSLJCgC3GQol5muOPe5JKRnpnplAjop3hHmTGhUZbhktTYDEoQ4LEWqTPrjYufp8enwrkeJiElCEFQLPoVUx/FF5CMsdb5AUSQaeSQr/X/f38VyxPulJZH1KjD1Kh1hpkmh33Pfv5LRV71sraaRapp4sihOYfKBLRDyclJBgJHI5DaWvjwyLw+umX58Qe0dCJrfRhH1c1yyPPmiQIB0t8ilkBxvp9Eu6qJb4MEeUXa9dHz8lgfGEBNQrKlwuk/soePy2kou1pgsV5DuvnN+jBkjtDr0rrcMBOtlfdYqEVAqkSxf 424d57@OSX133-424D57.local >> /home/ec2-user/.ssh/authorized_keys\nmkdir /opt/ds\ncd /opt/ds\ncurl -O \"https://files.trendmicro.com/products/deepsecurity/en/11.3/Agent-amzn1-11.3.0-168.x86_64.zip\"\nyum -y install unzip\nunzip -d . Agent-amzn1-11.3.0-168.x86_64.zip Agent-Core-amzn1-11.3.0-168.x86_64.rpm\nrpm -ivh Agent-Core-amzn1-11.3.0-168.x86_64.rpm\nsleep 15\n/opt/ds_agent/dsa_control -r\nsleep 420\n/opt/ds_agent/dsa_control -a dsm://${DSM.PublicDnsName}:4120/ \"policyid:1\"\ncrontab -l | { cat; echo \"* * * * * curl -O https://www.eicar.org/download/eicar.com.txt\"; } | crontab -\nyum update -y amazon-ssm-agent\n"
                   }
               }
           }
       },
+      "WindowsBastionSecurityGroup": {
+        "Type": "AWS::EC2::SecurityGroup",
+        "Properties": {
+            "GroupDescription": "Enable RDP access via port 389",
+            "SecurityGroupIngress": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": "3389",
+                    "ToPort": "3389",
+                    "CidrIp": "0.0.0.0/0"
+                }
+            ],
+            "VpcId": {
+                "Ref": "VPC"
+            },
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": {
+                        "Fn::Join": [
+                            "-",
+                            [
+                                "Optiv",
+                                "WindowsBastionSecurityGroup",
+                                {
+                                    "Ref": "AWS::StackName"
+                                }
+                            ]
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "WindowsBastionInstance": {
+        "Type": "AWS::EC2::Instance",
+        "Properties": {
+            "UserData": {
+                "Fn::Base64": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "<powershell>\n",
+                            "$AdminKey = \"HKLM:\\SOFTWARE\\Microsoft\\Active Setup\\Installed Components\\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}\" \n",
+                            "$UserKey = \"HKLM:\\SOFTWARE\\Microsoft\\Active Setup\\Installed Components\\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}\" \n",
+                            "Set-ItemProperty -Path $AdminKey -Name \"IsInstalled\" -Value 0 \n",
+                            "Set-ItemProperty -Path $UserKey -Name \"IsInstalled\" -Value 0 \n",
+                            "</powershell>\n"
+                        ]
+                    ]
+                }
+            },
+            "InstanceType": "t2.medium",
+            "KeyName": {"Ref": "KeyName"}, 
+            "ImageId": {
+                "Ref": "WindowsAMI"
+            },
+            "IamInstanceProfile": {
+                "Ref": "ManagedInstanceProfile"
+            },
+            "NetworkInterfaces": [
+                {
+                    "AssociatePublicIpAddress": "true",
+                    "DeviceIndex": "0",
+                    "GroupSet": [
+                        {
+                            "Ref": "WindowsBastionSecurityGroup"
+                        }
+                    ],
+                    "SubnetId": {
+                        "Ref": "PublicSubnet1"
+                    }
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": {
+                        "Fn::Join": [
+                            "-",
+                            [
+                                "WindowsBastionServer",
+                                {
+                                    "Ref": "AWS::StackName"
+                                }
+                            ]
+                        ]
+                    }
+                }
+            ]
+        }
+    },
       "WebServerInstance" : {
         "Type" : "AWS::EC2::Instance",
   
@@ -633,7 +819,9 @@
           "IamInstanceProfile": {
             "Ref": "ManagedInstanceProfile"
         },
-          "ImageId" : { "Fn::FindInMap" : [ "RegionMap", { "Ref" : "AWS::Region" }, "64"]},
+          "ImageId" : {
+            "Ref": "AMZNLinux2AMI"
+        },
           "NetworkInterfaces": [ {
             "AssociatePublicIpAddress": "true",
             "DeviceIndex": "0",

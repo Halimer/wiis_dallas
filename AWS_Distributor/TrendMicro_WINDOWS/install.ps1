@@ -1,4 +1,3 @@
-<powershell>
 #requires -version 4.0
 
 # PowerShell 4 or up is required to run this script
@@ -9,7 +8,7 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
    exit 1
 }
 
-$managerUrl=(Get-SSMParameter -Name DSMMANAGERURL).value
+$managerUrl=(Get-SSMParameter -Name DSMMANAGERURL).value + "/"
 
 $env:LogPath = "$env:appdata\Trend Micro\Deep Security Agent\installer"
 New-Item -path $env:LogPath -type directory
@@ -46,4 +45,3 @@ Start-Sleep -s 50
 #& $Env:ProgramFiles"\Trend Micro\Deep Security \dsa_control" -a dsm://ec2-3-208-89-168.compute-1.amazonaws.com:4120/
 Stop-Transcript
 echo "$(Get-Date -format T) - DSA Deployment Finished"
-</powershell>
